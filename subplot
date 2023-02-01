@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Jun 30 23:00:09 2022
+subplots excercise
+@author: draco
+"""
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+m1,m2 = np.genfromtxt("time_BHillustris1_30.dat", usecols=(6,7),unpack=True)
+mtot = m1+m2
+mchirp = (m1*m2)**3/5*(m1+m2)**(-1/5)
+fig, axs = plt.subplots(1, 2)
+
+Z,xedges,yedges=np.histogram2d(m1,m2,bins=50,density=False)
+extends = ["m1vsm2", "mtot vs mchirp"]
+
+# Note: contouring simply excludes masked or nan regions, so
+# instead of using the "bad" colormap value for them, it draws
+# nothing at all in them.  Therefore the following would have
+# no effect:
+# cmap.set_bad("red")
+
+fig, axs = plt.subplots(2, 1, constrained_layout=True)
+
+for ax, extend in zip(axs.flat, extends):
+    cs = ax.contourf(Z)
+    fig.colorbar(cs, ax=ax, shrink=0.9)
+    ax.set_title("extend = %s" % extend)
+    ax.locator_params(nbins=4)
+
+plt.show()
+"""Z,xedges,yedges=np.histogram2d(m1,m2,bins=50,density=False)
+z=np.transpose(Z)
+axs[0][0].plot.contourf(z)
+axs[0][0].set_xlim(0, 2)
+axs[0][0].set_xlabel('time')
+axs[0][0].set_ylabel('Sinusoidal signal')
+axs[0][0].grid(True)"""
