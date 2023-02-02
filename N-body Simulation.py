@@ -3,7 +3,9 @@
 
 # # N-body Simulation
 
-# In this notebook I have tried implimentinf the N-body problem with different techniques discussed in the class. The number of bodies can be increased by adding the mass, coordinates and velocity arrays respectively.
+# In this notebook I have tried implimentinf the N-body problem with different techniques discussed in the class. 
+#In the code below I have taken an example of a three body system. Two bodies have same mass, and the third body is heavier than the other two. The third body has 0. intial velocity as well(just for getting pretty plots).
+#The number of bodies can be increased by adding the mass, coordinates and velocity arrays respectively.
 # The next course of action will be to make 3-d plots (or animated 3d plots?) and maybe take user input to play with the code. 
 
 # In[1]:
